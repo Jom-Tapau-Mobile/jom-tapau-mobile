@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "860400078470",
+    "project_id": "jom-tapau-mobile",
+    "storage_bucket": "jom-tapau-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860400078470:android:487afeba3ac1b55a3a0b07",
+        "android_client_info": {
+          "package_name": "com.systematic.jom_tapau_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860400078470-te6dnmtqlo47nkot78kojimspbh6iugj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMM_w6WwecA_HjHO5J--NYhkwLAi5izpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860400078470-te6dnmtqlo47nkot78kojimspbh6iugj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
