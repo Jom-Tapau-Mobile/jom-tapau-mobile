@@ -114,19 +114,18 @@ class _LoginState extends State<Login> {
                   ),
                   TextButton(
                     onPressed: () {
-                     
                       RegExp emailRegex =
                           RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
                       if (emailRegex.hasMatch(email)) {
-                         dynamic result = _auth.sendPasswordReset(email);
+                        dynamic result = _auth.sendPasswordReset(email);
                         setState(() => error =
                             "Reset Password Email has been sent to your email, Please Check");
                       } else {
-                        print('Invalid email address');
+                        setState(() => error = "Please provide valid email");
                       }
                     },
                     child: Text(
-                      'Click Here',
+                      'Reset Password',
                       style: TextStyle(
                         color: Colors.blue,
                         decoration: TextDecoration.underline,
