@@ -95,7 +95,8 @@ class _LoginState extends State<Login> {
                         if (result == null) {
                           setState(() => error = "Please supply a valid email");
                         } else {
-                          if (result == "user-not-found"||result =="wrong-password") {
+                          if (result == "user-not-found" ||
+                              result == "wrong-password") {
                             setState(() => error = result);
                           }
                         }
@@ -110,7 +111,28 @@ class _LoginState extends State<Login> {
                       error,
                       style: TextStyle(color: Colors.red),
                     ),
-                  )
+                  ),
+                  TextButton(
+                    onPressed: () {
+                     
+                      RegExp emailRegex =
+                          RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                      if (emailRegex.hasMatch(email)) {
+                         dynamic result = _auth.sendPasswordReset(email);
+                        setState(() => error =
+                            "Reset Password Email has been sent to your email, Please Check");
+                      } else {
+                        print('Invalid email address');
+                      }
+                    },
+                    child: Text(
+                      'Click Here',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

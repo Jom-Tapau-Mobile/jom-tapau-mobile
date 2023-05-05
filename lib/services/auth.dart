@@ -15,6 +15,17 @@ class AuthService {
         .map((User? user) => _userFromFirebase(user!));
   }
 
+  Future sendPasswordReset(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+       String successCode = "Password reset has been sent please check email";
+      return successCode;
+    } catch (e) {
+      String errorCode = "Please enter a valid email";
+      return errorCode;
+    }
+  }
+
   Future loginWithEmail(String emailAddress, String password) async {
     try {
       final credential = await FirebaseAuth.instance
