@@ -19,7 +19,9 @@ class Home extends StatelessWidget {
         actions: <Widget>[
           TextButton(
             child: Text('Logout', style: TextStyle(color: Colors.white)),
-            onPressed: () {},
+            onPressed: () async {
+              await _auth.signOut();
+            },
           ),
           IconButton(
             icon: Icon(Icons.logout),
