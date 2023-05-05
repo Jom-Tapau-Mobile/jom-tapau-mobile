@@ -10,12 +10,11 @@ class AuthService {
   }
 
   Stream<AppUser?> get user {
-    return 
-   
-    _auth.authStateChanges().map((User? user) => _userFromFirebase(user!));
+    return _auth
+        .authStateChanges()
+        .map((User? user) => _userFromFirebase(user!));
   }
 
- 
   Future signInAnon() async {
     try {
       UserCredential result = await _auth.signInAnonymously();
@@ -23,6 +22,16 @@ class AuthService {
       return _userFromFirebase(user!);
     } catch (e) {
       print('Error signing in anonymously: $e');
+      return null;
+    }
+  }
+
+  //sign out
+  Future signOut() async {
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      print(e.toString());
       return null;
     }
   }

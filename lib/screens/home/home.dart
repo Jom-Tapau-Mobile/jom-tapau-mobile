@@ -2,11 +2,13 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
+import 'package:jom_tapau_mobile/services/auth.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  Home({super.key});
 
   @override
+  final AuthService _auth = AuthService();
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 218, 214, 214),
@@ -22,7 +24,9 @@ class Home extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.logout),
             tooltip: 'Logout',
-            onPressed: () {},
+            onPressed: () async {
+              await _auth.signOut();
+            },
           )
         ],
       ),
