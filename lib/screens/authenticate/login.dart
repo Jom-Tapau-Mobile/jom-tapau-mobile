@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Login extends StatefulWidget {
   final Function toggleView;
+  const Login({super.key, required this.toggleView});
 
-  const SignIn({super.key, required this.toggleView});
   @override
-  State<SignIn> createState() => _SignInState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignInState extends State<SignIn> {
+class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
-  final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
   String error = '';
@@ -19,20 +20,19 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);
-
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 241, 241, 241),
         appBar: AppBar(
           actions: [
             TextButton(
-              child: Text('Login', style: TextStyle(color: Colors.white)),
+              child: Text('Register', style: TextStyle(color: Colors.white)),
               onPressed: () async {
                 widget.toggleView();
               },
             ),
             IconButton(
               icon: Icon(Icons.person),
-              tooltip: 'Register',
+              tooltip: 'Login',
               onPressed: () async {
                 widget.toggleView();
               },
@@ -48,13 +48,12 @@ class _SignInState extends State<SignIn> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50.0),
             child: Form(
-              key: _formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
                     child: Text(
-                      'Please Register to Continue',
+                      'Please Login to Continue',
                       style: TextStyle(color: Colors.red, fontSize: 25),
                     ),
                   ),
@@ -62,7 +61,6 @@ class _SignInState extends State<SignIn> {
                     height: 20.0,
                   ),
                   TextFormField(
-                    validator: (val) => val!.isEmpty ? 'Enter an Email' : null,
                     cursorColor: Colors.red,
                     decoration: const InputDecoration(
                         hintText: 'Enter Email',
@@ -76,9 +74,6 @@ class _SignInState extends State<SignIn> {
                     height: 10.0,
                   ),
                   TextFormField(
-                    validator: (val) => val!.length < 7
-                        ? 'Enter more than 7 digit Password'
-                        : null,
                     decoration: const InputDecoration(
                         hintText: 'Enter Password',
                         focusedBorder: OutlineInputBorder(
@@ -95,21 +90,18 @@ class _SignInState extends State<SignIn> {
                   ElevatedButton(
                       style: style,
                       onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          dynamic result =
-                              await _auth.registerWithEmail(email, password);
-                          if (result == null) {
-                            setState(
-                                () => error = "Please supply a valid email");
-                          } else {
-                            if (result == "email-already-in-use") {
-                              setState(() => error = result);
-                            }
-                            await _auth.registerWithEmail(email, password);
+                        dynamic result =
+                            await _auth.loginWithEmail(email, password);
+                        if (result == null) {
+                          setState(() => error = "Please supply a valid email");
+                        } else {
+                          if (result == "user-not-found"||result =="wrong-password") {
+                            setState(() => error = result);
                           }
                         }
+                        await _auth.loginWithEmail(email, password);
                       },
-                      child: Text('Register')),
+                      child: Text('Login')),
                   SizedBox(
                     height: 20,
                   ),
@@ -124,5 +116,6 @@ class _SignInState extends State<SignIn> {
             ),
           ),
         ));
+    ;
   }
 }
