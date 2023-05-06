@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
         ),
         body: Center(
           child: Container(
-            width: 300,
+            width: 350,
             padding: EdgeInsets.all(10.0),
             child: ListView(
               shrinkWrap: true,
@@ -54,18 +54,23 @@ class Home extends StatelessWidget {
                           ),
                           color: Color.fromRGBO(254, 208, 133, 1),
                           child: Padding(
-                            padding: EdgeInsets.all(12.0),
+                            padding: EdgeInsets.symmetric(
+                              vertical: 8.0,
+                              horizontal: 30.0,
+                            ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Icon(
                                   Icons.restaurant_menu,
-                                  size: 30.0,
+                                  size: 35.0,
                                 ),
                                 Text(
-                                  'Menu',
+                                  "Menu",
                                   style: TextStyle(
-                                    fontSize: 36,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[800],
                                   ),
                                 ),
                               ],
@@ -89,18 +94,23 @@ class Home extends StatelessWidget {
                           ),
                           color: Color.fromRGBO(254, 208, 133, 1),
                           child: Padding(
-                            padding: EdgeInsets.all(12.0),
+                            padding: EdgeInsets.symmetric(
+                              vertical: 8.0,
+                              horizontal: 30.0,
+                            ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Icon(
                                   Icons.ramen_dining,
-                                  size: 30.0,
+                                  size: 35.0,
                                 ),
                                 Text(
                                   'My Order',
                                   style: TextStyle(
-                                    fontSize: 36,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[800],
                                   ),
                                 ),
                               ],
@@ -109,6 +119,46 @@ class Home extends StatelessWidget {
                         ),
                       )),
                 ),
+
+                //Subscription
+                GestureDetector(
+                  onTap: () {},
+                  child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 100,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          color: Color.fromRGBO(254, 208, 133, 1),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 8.0,
+                              horizontal: 30.0,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.restaurant_menu,
+                                  size: 35.0,
+                                ),
+                                Text(
+                                  'Subscription',
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[800],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )),
+                )
               ],
             ),
           ),
