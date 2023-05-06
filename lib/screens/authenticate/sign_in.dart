@@ -15,6 +15,8 @@ class _SignInState extends State<SignIn> {
   String name = '';
   String email = '';
   String password = '';
+  String phoneNumber = '';
+  String role = "User";
   String error = '';
   @override
   Widget build(BuildContext context) {
@@ -73,7 +75,7 @@ class _SignInState extends State<SignIn> {
                     },
                   ),
                   SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   TextFormField(
                     cursorColor: Colors.red,
@@ -82,11 +84,11 @@ class _SignInState extends State<SignIn> {
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
                     onChanged: (val) {
-                      setState(() => name = val);
+                      setState(() => phoneNumber = val);
                     },
                   ),
                   SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   TextFormField(
                     validator: (val) => val!.isEmpty ? 'Enter an Email' : null,

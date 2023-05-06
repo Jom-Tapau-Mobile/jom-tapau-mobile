@@ -52,6 +52,7 @@ class AuthService {
         email: emailAddress,
         password: password,
       );
+      FirebaseAuth.instance.currentUser?.updateDisplayName(name);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
