@@ -15,6 +15,7 @@ class _UserProfileState extends State<UserProfile> {
 
   @override
   Widget build(BuildContext context) {
+    //fetch data
     User? user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
@@ -32,29 +33,107 @@ class _UserProfileState extends State<UserProfile> {
           )
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              child: Text(user?.displayName ?? 'No display name found',
-                  style: TextStyle(fontSize: 24.0)),
-              radius: 50.0,
-            ),
-            SizedBox(height: 16.0),
-            Text('Username:', style: TextStyle(fontSize: 18.0)),
-            Text(user?.displayName ?? 'No display name found',
-                style: TextStyle(fontSize: 24.0)),
-            SizedBox(height: 16.0),
-            SizedBox(height: 16.0),
-            Text('Email:', style: TextStyle(fontSize: 18.0)),
-            Text(user?.email ?? 'No display name found',
-                style: TextStyle(fontSize: 24.0)),
-            SizedBox(height: 16.0),
-            Text('Bio:', style: TextStyle(fontSize: 18.0)),
-          ],
-        ),
+      body: ListView(
+        children: [
+          Column(
+            children: [
+              Icon(
+                Icons.account_circle_outlined,
+                size: 100,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                user?.displayName ?? "NO Name",
+                style: TextStyle(fontSize: 20, color: Colors.amber),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.stars_outlined, size: 32.0),
+                  SizedBox(width: 8.0),
+                  Text("500 Points", style: TextStyle(fontSize: 16.0)),
+                  Text(": Silver", style: TextStyle(fontSize: 16.0)),
+                ],
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 70, vertical: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: Column(
+                        children: [
+                          Icon(Icons.rice_bowl_sharp, size: 60),
+                          Text("sad"),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                      child: Column(
+                        children: [
+                          Icon(Icons.rice_bowl_sharp, size: 60),
+                          Text("sad"),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                      child: Column(
+                        children: [
+                          Icon(Icons.rice_bowl_sharp, size: 60),
+                          Text("sad"),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 70, vertical: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: Column(
+                        children: [
+                          Icon(Icons.rice_bowl_sharp, size: 60),
+                          Text("sad"),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                      child: Column(
+                        children: [
+                          Icon(Icons.rice_bowl_sharp, size: 60),
+                          Text("sad"),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                      child: Column(
+                        children: [
+                          Icon(Icons.rice_bowl_sharp, size: 60),
+                          Text("sad"),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }
