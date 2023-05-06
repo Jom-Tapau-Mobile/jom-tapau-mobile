@@ -10,3 +10,23 @@ class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
 }
+
+class _LoginState extends State<Login> {
+  final AuthService _auth = AuthService();
+  String email = '';
+  String password = '';
+  String error = '';
+  @override
+  Widget build(BuildContext context) {
+    final ButtonStyle style = ElevatedButton.styleFrom(
+        textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);
+    return Scaffold(
+        backgroundColor: Color.fromARGB(255, 241, 241, 241),
+        appBar: AppBar(
+          actions: [
+            TextButton(
+              child: Text('Register', style: TextStyle(color: Colors.white)),
+              onPressed: () async {
+                widget.toggleView();
+              },
+            ),
