@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
+import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,11 +13,12 @@ class Home extends StatelessWidget {
 
   @override
   final AuthService _auth = AuthService();
+  late final userInfo;
   Widget build(BuildContext context) {
     //get the current user from the firebase
     _auth.getAuth().authStateChanges().listen((User? user) {
       if (user != null) {
-        print(user);
+        userInfo = user;
       }
     });
     return Scaffold(
@@ -26,11 +28,14 @@ class Home extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.red,
           actions: <Widget>[
-            TextButton(
-              child: Text('Logout', style: TextStyle(color: Colors.white)),
-              onPressed: () async {
-                await _auth.signOut();
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserProfile()),
+                );
               },
+              icon: Icon(Icons.person),
             ),
             IconButton(
               icon: Icon(Icons.logout),
