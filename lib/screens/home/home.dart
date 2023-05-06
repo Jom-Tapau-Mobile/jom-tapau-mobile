@@ -40,6 +40,7 @@ class Home extends StatelessWidget {
               shrinkWrap: true,
               padding: EdgeInsets.all(8.0),
               children: <Widget>[
+                //Menu
                 GestureDetector(
                   onTap: () {},
                   child: Padding(
@@ -72,7 +73,42 @@ class Home extends StatelessWidget {
                           ),
                         ),
                       )),
-                )
+                ),
+
+                //My order
+                GestureDetector(
+                  onTap: () {},
+                  child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 100,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          color: Color.fromRGBO(254, 208, 133, 1),
+                          child: Padding(
+                            padding: EdgeInsets.all(12.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.ramen_dining,
+                                  size: 30.0,
+                                ),
+                                Text(
+                                  'My Order',
+                                  style: TextStyle(
+                                    fontSize: 36,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )),
+                ),
               ],
             ),
           ),
