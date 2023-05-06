@@ -35,6 +35,9 @@ class _UserProfileState extends State<UserProfile> {
       ),
       body: ListView(
         children: [
+          SizedBox(
+            height: 50,
+          ),
           Column(
             children: [
               Icon(
@@ -45,8 +48,8 @@ class _UserProfileState extends State<UserProfile> {
                 height: 10,
               ),
               Text(
-                user?.displayName ?? "NO Name",
-                style: TextStyle(fontSize: 20, color: Colors.amber),
+                user?.displayName ?? "GM Shimon",
+                style: TextStyle(fontSize: 24, color: Colors.amber),
               ),
               SizedBox(
                 height: 20,
@@ -54,25 +57,32 @@ class _UserProfileState extends State<UserProfile> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.stars_outlined, size: 32.0),
+                  Icon(
+                    Icons.military_tech_sharp,
+                    size: 60.0,
+                    color: Colors.grey[500],
+                  ),
                   SizedBox(width: 8.0),
-                  Text("500 Points", style: TextStyle(fontSize: 16.0)),
-                  Text(": Silver", style: TextStyle(fontSize: 16.0)),
+                  Text("500 Points", style: TextStyle(fontSize: 20.0)),
+                  Text(": Silver", style: TextStyle(fontSize: 20.0)),
                 ],
               ),
               SizedBox(
                 height: 50,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 70, vertical: 0),
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       child: Column(
                         children: [
-                          Icon(Icons.rice_bowl_sharp, size: 60),
-                          Text("sad"),
+                          Icon(Icons.rice_bowl_sharp, size: 70),
+                          Text(
+                            "Order",
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ],
                       ),
                     ),
@@ -80,8 +90,11 @@ class _UserProfileState extends State<UserProfile> {
                     Container(
                       child: Column(
                         children: [
-                          Icon(Icons.rice_bowl_sharp, size: 60),
-                          Text("sad"),
+                          Icon(Icons.notifications_active_outlined, size: 70),
+                          Text(
+                            "Promotion",
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ],
                       ),
                     ),
@@ -89,24 +102,33 @@ class _UserProfileState extends State<UserProfile> {
                     Container(
                       child: Column(
                         children: [
-                          Icon(Icons.rice_bowl_sharp, size: 60),
-                          Text("sad"),
+                          Icon(Icons.wallet_outlined, size: 70),
+                          Text(
+                            "Wallet",
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
+              SizedBox(
+                height: 25,
+              ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 70, vertical: 0),
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                       child: Column(
                         children: [
-                          Icon(Icons.rice_bowl_sharp, size: 60),
-                          Text("sad"),
+                          Icon(Icons.help_outline_rounded, size: 70),
+                          Text(
+                            "Help",
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ],
                       ),
                     ),
@@ -114,8 +136,11 @@ class _UserProfileState extends State<UserProfile> {
                     Container(
                       child: Column(
                         children: [
-                          Icon(Icons.rice_bowl_sharp, size: 60),
-                          Text("sad"),
+                          Icon(Icons.album_outlined, size: 70),
+                          Text(
+                            "About",
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ],
                       ),
                     ),
@@ -123,8 +148,11 @@ class _UserProfileState extends State<UserProfile> {
                     Container(
                       child: Column(
                         children: [
-                          Icon(Icons.rice_bowl_sharp, size: 60),
-                          Text("sad"),
+                          Icon(Icons.settings_applications_outlined, size: 70),
+                          Text(
+                            "Settings",
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ],
                       ),
                     ),
