@@ -3,6 +3,9 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../models/user.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -10,6 +13,12 @@ class Home extends StatelessWidget {
   @override
   final AuthService _auth = AuthService();
   Widget build(BuildContext context) {
+    //get the current user from the firebase
+    _auth.getAuth().authStateChanges().listen((User? user) {
+      if (user != null) {
+        print(user);
+      }
+    });
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 218, 214, 214),
         appBar: AppBar(

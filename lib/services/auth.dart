@@ -3,6 +3,9 @@ import 'package:jom_tapau_mobile/models/user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuth getAuth() {
+    return _auth;
+  }
 
   AppUser? _userFromFirebase(User user) {
     // ignore: unnecessary_null_comparison
@@ -18,7 +21,7 @@ class AuthService {
   Future sendPasswordReset(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-       String successCode = "Password reset has been sent please check email";
+      String successCode = "Password reset has been sent please check email";
       return successCode;
     } catch (e) {
       String errorCode = "Please enter a valid email";
