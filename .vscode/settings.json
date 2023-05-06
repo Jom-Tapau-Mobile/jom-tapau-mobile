@@ -1,4 +1,5 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "cmake.sourceDirectory": "C:/flutter/Jom-Tapau-Mobile/jom_tapau_mobile/linux"
+    "cmake.sourceDirectory": "C:/flutter/Jom-Tapau-Mobile/jom_tapau_mobile/linux",
+    "cmake.configureOnOpen": false
 }
