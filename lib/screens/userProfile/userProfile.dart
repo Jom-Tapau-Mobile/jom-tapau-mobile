@@ -12,15 +12,10 @@ class UserProfile extends StatefulWidget {
 class _UserProfileState extends State<UserProfile> {
   final AuthService _auth = AuthService();
   late final userInfo;
+
   @override
   Widget build(BuildContext context) {
-    //get the current user from the firebase
-    _auth.getAuth().authStateChanges().listen((User? user) {
-      if (user != null) {
-        userInfo = user;
-        print(userInfo);
-      }
-    });
+    User? user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
       appBar: AppBar(
@@ -37,7 +32,30 @@ class _UserProfileState extends State<UserProfile> {
           )
         ],
       ),
-      body: Text("Hello from user Profile"),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              child: Text(user?.displayName ?? 'No display name found',
+                  style: TextStyle(fontSize: 24.0)),
+              radius: 50.0,
+            ),
+            SizedBox(height: 16.0),
+            Text('Username:', style: TextStyle(fontSize: 18.0)),
+            Text(user?.displayName ?? 'No display name found',
+                style: TextStyle(fontSize: 24.0)),
+            SizedBox(height: 16.0),
+            SizedBox(height: 16.0),
+            Text('Email:', style: TextStyle(fontSize: 18.0)),
+            Text(user?.email ?? 'No display name found',
+                style: TextStyle(fontSize: 24.0)),
+            SizedBox(height: 16.0),
+            Text('Bio:', style: TextStyle(fontSize: 18.0)),
+          ],
+        ),
+      ),
     );
   }
 }
