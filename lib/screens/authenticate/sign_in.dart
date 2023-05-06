@@ -12,6 +12,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  String name = '';
   String email = '';
   String password = '';
   String error = '';
@@ -44,9 +45,9 @@ class _SignInState extends State<SignIn> {
           title: Text('Jom Tapau'),
         ),
         body: Container(
-          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Form(
               key: _formKey,
               child: Column(
@@ -57,6 +58,32 @@ class _SignInState extends State<SignIn> {
                       'Please Register to Continue',
                       style: TextStyle(color: Colors.red, fontSize: 25),
                     ),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  TextFormField(
+                    cursorColor: Colors.red,
+                    decoration: const InputDecoration(
+                        hintText: 'Enter Name',
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red))),
+                    onChanged: (val) {
+                      setState(() => name = val);
+                    },
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  TextFormField(
+                    cursorColor: Colors.red,
+                    decoration: const InputDecoration(
+                        hintText: 'Phone Number',
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red))),
+                    onChanged: (val) {
+                      setState(() => name = val);
+                    },
                   ),
                   SizedBox(
                     height: 20.0,
@@ -96,8 +123,8 @@ class _SignInState extends State<SignIn> {
                       style: style,
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          dynamic result =
-                              await _auth.registerWithEmail(email, password);
+                          dynamic result = await _auth.registerWithEmail(
+                              name, email, password);
                           if (result == null) {
                             setState(
                                 () => error = "Please supply a valid email");
@@ -105,7 +132,8 @@ class _SignInState extends State<SignIn> {
                             if (result == "email-already-in-use") {
                               setState(() => error = result);
                             }
-                            await _auth.registerWithEmail(email, password);
+                            await _auth.registerWithEmail(
+                                name, email, password);
                           }
                         }
                       },
