@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         catchError: (_, __) {},
         value: AuthService().user,
         child: MaterialApp(
-          home: Wrapper(),
+          home: Wrapper() ,
           debugShowCheckedModeBanner: false,
         ));
   }
