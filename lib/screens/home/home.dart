@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
+import 'package:jom_tapau_mobile/services/api_services.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,7 +23,7 @@ class Home extends StatelessWidget {
       }
     });
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 218, 214, 214),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
           title: Text('Jom Tapau'),
           centerTitle: true,
@@ -56,17 +57,32 @@ class Home extends StatelessWidget {
               children: <Widget>[
                 //Menu
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/menu');
+                  },
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(
+                                  0, 3), // changes the position of the shadow
+                            ),
+                          ],
+                        ),
                         height: 100,
                         child: Card(
                           shape: RoundedRectangleBorder(
                             side: BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          color: Color.fromRGBO(254, 208, 133, 1),
+                          color: Color.fromRGBO(247, 247, 247, 1),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.0,
@@ -93,20 +109,35 @@ class Home extends StatelessWidget {
                         ),
                       )),
                 ),
-
+                SizedBox(
+                  height: 40,
+                ),
                 //My order
                 GestureDetector(
                   onTap: () {},
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(
+                                  0, 3), // changes the position of the shadow
+                            ),
+                          ],
+                        ),
                         height: 100,
                         child: Card(
                           shape: RoundedRectangleBorder(
                             side: BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          color: Color.fromRGBO(254, 208, 133, 1),
+                          color: Color.fromRGBO(247, 247, 247, 1),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.0,
@@ -133,20 +164,35 @@ class Home extends StatelessWidget {
                         ),
                       )),
                 ),
-
+                SizedBox(
+                  height: 40,
+                ),
                 //Subscription
                 GestureDetector(
                   onTap: () {},
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(
+                                  0, 3), // changes the position of the shadow
+                            ),
+                          ],
+                        ),
                         height: 100,
                         child: Card(
                           shape: RoundedRectangleBorder(
                             side: BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          color: Color.fromRGBO(254, 208, 133, 1),
+                          color: Color.fromRGBO(247, 247, 247, 1),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.0,
