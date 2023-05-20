@@ -9,7 +9,7 @@ class AuthService {
 
   AppUser? _userFromFirebase(User user) {
     // ignore: unnecessary_null_comparison
-    return user != null ? AppUser(uid: user.uid) : null;
+    return user != null ? AppUser(uid: user.uid, email: user.email) : null;
   }
 
   Stream<AppUser?> get user {
@@ -33,6 +33,7 @@ class AuthService {
     try {
       final credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: emailAddress, password: password);
+          
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -42,6 +43,7 @@ class AuthService {
         return e.code;
       }
     }
+   
   }
 
   Future registerWithEmail(
@@ -63,6 +65,7 @@ class AuthService {
     } catch (e) {
       print(e);
     }
+
   }
 
   Future signInAnon() async {
