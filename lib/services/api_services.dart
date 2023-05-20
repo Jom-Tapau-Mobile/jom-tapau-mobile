@@ -5,6 +5,35 @@ import 'package:http/http.dart' as http;
 import 'package:jom_tapau_mobile/models/foodObj.dart';
 import 'package:jom_tapau_mobile/snackbar.dart';
 
+Future getProduct() async {
+  List<FoodObj> foods = [];
+
+  Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/food");
+
+  try {
+    var response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      var food = jsonDecode(response.body);
+
+      food['foodCollection'].forEach((value) => {
+            foods.add(FoodObj(
+                name: value['name'],
+                price: value['price'],
+                description: value['description'],
+                category: value['category'],
+                imgURL: value['imgURL'])),
+          });
+
+      return foods;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+}
+
 Future<String> postData(var foodObj) async {
   Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/food");
   var error = '';
