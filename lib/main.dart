@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           routes: {
             '/addFood': (context) => AddFood(),
+            '/menu': (context) => Menu(),
             // Add more routes as needed
           },
           home: Wrapper(),
