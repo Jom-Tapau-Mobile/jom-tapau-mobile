@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
+import 'package:jom_tapau_mobile/screens/menu/menu.dart';
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class Home extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => UserProfile()),
+                  MaterialPageRoute(builder: (context) => Menu()),
                 );
               },
               icon: Icon(Icons.person),
@@ -56,7 +57,12 @@ class Home extends StatelessWidget {
               children: <Widget>[
                 //Menu
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UserProfile()),
+                    );
+                  },
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(
