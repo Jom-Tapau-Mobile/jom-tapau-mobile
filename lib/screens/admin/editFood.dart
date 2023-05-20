@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jom_tapau_mobile/screens/admin/editFromFood.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:jom_tapau_mobile/snackbar.dart';
 import '../../services/api_services.dart';
@@ -81,6 +82,14 @@ class _EditFoodState extends State<EditFood> {
                                   child: IconButton(
                                     icon: Icon(Icons.edit),
                                     onPressed: () {
+                                      getSingleFood(widget.data[index]['_id'])
+                                          .then((value) {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    EditFoodForm(data: value)));
+                                      });
                                       // Handle button 1 tap
                                       print(
                                           'Button 1 tapped for ${widget.data[index]['_id']}');

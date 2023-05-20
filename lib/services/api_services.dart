@@ -60,3 +60,20 @@ Future<String> deleteFood(var id) async {
   }
   return error;
 }
+
+//get single food
+
+Future<List<dynamic>> getSingleFood(var id) async {
+  Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/food/${id}");
+
+  var response = await http.get(url);
+  var data;
+  if (response.statusCode == 200) {
+    var jsonString = response.body;
+    data = json.decode(jsonString);
+    // print(data);
+  } else {
+    throw Exception('Failed to fetch data from API');
+  }
+  return data;
+}
