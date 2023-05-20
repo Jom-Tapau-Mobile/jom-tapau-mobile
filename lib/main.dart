@@ -8,6 +8,7 @@ import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'screens/admin/addFood.dart';
+import 'screens/menu/menu.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
