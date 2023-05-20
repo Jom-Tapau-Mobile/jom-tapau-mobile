@@ -90,7 +90,7 @@ class _Menu extends State<Menu> {
                                 SizedBox(height: 8.0),
                                 Center(
                                   child: Text(
-                                    "${foods[index]['price']}",
+                                    "RM ${foods[index]['price']}",
                                     style: TextStyle(
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.bold,
