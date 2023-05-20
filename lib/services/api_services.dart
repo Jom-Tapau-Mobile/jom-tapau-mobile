@@ -28,3 +28,17 @@ Future<String> postData(var foodObj) async {
   }
   return error;
 }
+
+Future<List> getData() async {
+  Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/food");
+
+  var response = await http.get(url);
+  var data;
+  if (response.statusCode == 200) {
+    var jsonString = response.body;
+    data = json.decode(jsonString);
+  } else {
+    print('API request failed with status code: ${response.statusCode}');
+  }
+  return data;
+}
