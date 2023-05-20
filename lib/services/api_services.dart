@@ -29,6 +29,7 @@ Future<String> postData(var foodObj) async {
   return error;
 }
 
+// function to fetch data
 Future<List<dynamic>> getData() async {
   Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/food");
 
@@ -42,4 +43,20 @@ Future<List<dynamic>> getData() async {
     throw Exception('Failed to fetch data from API');
   }
   return data;
+}
+
+//function to delete data
+Future<String> deleteFood(var id) async {
+  Uri url =
+      Uri.parse("https://jom-tapau-backend.onrender.com/foodDelete/${id}");
+  var error = '';
+  var response = await http.get(url);
+  if (response.statusCode == 200) {
+    error = "Data Inserted!";
+    print(json);
+  } else {
+    error = "Failed!";
+    print("error");
+  }
+  return error;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
+import 'package:jom_tapau_mobile/snackbar.dart';
 import '../../services/api_services.dart';
 
 class EditFood extends StatefulWidget {
@@ -82,7 +83,7 @@ class _EditFoodState extends State<EditFood> {
                                     onPressed: () {
                                       // Handle button 1 tap
                                       print(
-                                          'Button 1 tapped for ${widget.data[index]['name']}');
+                                          'Button 1 tapped for ${widget.data[index]['_id']}');
                                     },
                                   ),
                                 ),
@@ -97,9 +98,13 @@ class _EditFoodState extends State<EditFood> {
                                   child: IconButton(
                                     icon: Icon(Icons.delete),
                                     onPressed: () {
+                                      var message =
+                                          deleteFood(widget.data[index]['_id']);
+
+                                      showSnackbar(context);
                                       // Handle button 1 tap
                                       print(
-                                          'Button 1 tapped for ${widget.data[index]['name']}');
+                                          'Button 1 tapped for ${widget.data[index]['_id']}');
                                     },
                                   ),
                                 ),
