@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
       }
     });
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 218, 214, 214),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
           title: Text('Jom Tapau'),
           centerTitle: true,
@@ -66,7 +66,7 @@ class Home extends StatelessWidget {
                             side: BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          color: Color.fromRGBO(254, 208, 133, 1),
+                          color: Color.fromRGBO(247, 247, 247, 1),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.0,
@@ -106,7 +106,7 @@ class Home extends StatelessWidget {
                             side: BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          color: Color.fromRGBO(254, 208, 133, 1),
+                          color: Color.fromRGBO(247, 247, 247, 1),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.0,
@@ -146,7 +146,7 @@ class Home extends StatelessWidget {
                             side: BorderSide(color: Colors.black),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          color: Color.fromRGBO(254, 208, 133, 1),
+                          color: Color.fromRGBO(247, 247, 247, 1),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.0,
