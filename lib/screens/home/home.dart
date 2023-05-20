@@ -60,6 +60,19 @@ class Home extends StatelessWidget {
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(
+                                  0, 3), // changes the position of the shadow
+                            ),
+                          ],
+                        ),
                         height: 100,
                         child: Card(
                           shape: RoundedRectangleBorder(
@@ -100,6 +113,19 @@ class Home extends StatelessWidget {
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(
+                                  0, 3), // changes the position of the shadow
+                            ),
+                          ],
+                        ),
                         height: 100,
                         child: Card(
                           shape: RoundedRectangleBorder(
@@ -140,6 +166,19 @@ class Home extends StatelessWidget {
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(
+                                  0, 3), // changes the position of the shadow
+                            ),
+                          ],
+                        ),
                         height: 100,
                         child: Card(
                           shape: RoundedRectangleBorder(
