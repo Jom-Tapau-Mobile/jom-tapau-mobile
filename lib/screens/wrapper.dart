@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jom_tapau_mobile/models/user.dart';
+import 'package:jom_tapau_mobile/screens/admin/adminHomepage.dart';
 import 'package:jom_tapau_mobile/screens/authenticate/authenticate.dart';
 import 'package:jom_tapau_mobile/screens/home/home.dart';
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
@@ -15,6 +16,8 @@ class Wrapper extends StatelessWidget {
     print(user);
     if (user == null) {
       return const Authenticate();
+    } else if (user.email == "admin@gmail.com") {
+      return AdminHomePage();
     } else {
       return Home();
     }

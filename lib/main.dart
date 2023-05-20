@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:jom_tapau_mobile/models/user.dart';
+
 import 'package:jom_tapau_mobile/screens/wrapper.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
+import 'screens/admin/addFood.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +28,11 @@ class MyApp extends StatelessWidget {
         catchError: (_, __) {},
         value: AuthService().user,
         child: MaterialApp(
-          home: Wrapper() ,
+          routes: {
+            '/addFood': (context) => AddFood(),
+            // Add more routes as needed
+          },
+          home: Wrapper(),
           debugShowCheckedModeBanner: false,
         ));
   }
