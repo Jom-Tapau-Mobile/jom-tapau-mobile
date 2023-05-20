@@ -36,20 +36,29 @@ class _EditFoodState extends State<EditFood> {
             )
           ],
         ),
-        body: GridView.count(
-            crossAxisCount: 2,
-            children: List.generate(widget.data.length, (index) {
-              return Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Card(
-                  child: ListTile(
-                    title: Text(widget.data[index]['name']),
-                    onTap: () {
-                      print("Hello");
-                    },
-                  ),
-                ),
-              );
-            })));
+        body: ListView(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 40, 10, 0),
+              child: GridView.count(
+                crossAxisCount: 2,
+                controller: new ScrollController(keepScrollOffset: false),
+                childAspectRatio: (40 / 30),
+                shrinkWrap: true,
+                children: List.generate(widget.data.length, (index) {
+                  return Padding(
+                    padding: EdgeInsets.fromLTRB(1, 2, 1, 2),
+                    child: Card(
+                      child: ListTile(
+                        title: Text(widget.data[index]['name']),
+                        onTap: () {},
+                      ),
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ],
+        ));
   }
 }
