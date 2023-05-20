@@ -37,6 +37,7 @@ Future<List> getData() async {
   if (response.statusCode == 200) {
     var jsonString = response.body;
     data = json.decode(jsonString);
+    print(data);
   } else {
     print('API request failed with status code: ${response.statusCode}');
   }
