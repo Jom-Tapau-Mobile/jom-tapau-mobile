@@ -80,7 +80,7 @@ class Home extends StatelessWidget {
                                   size: 35.0,
                                 ),
                                 Text(
-                                  "Menu",
+                                  "Today's Menu",
                                   style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
