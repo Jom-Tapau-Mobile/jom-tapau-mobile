@@ -40,22 +40,77 @@ class _EditFoodState extends State<EditFood> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.fromLTRB(10, 40, 10, 0),
-              child: GridView.count(
-                crossAxisCount: 2,
-                controller: new ScrollController(keepScrollOffset: false),
-                childAspectRatio: (40 / 30),
-                shrinkWrap: true,
-                children: List.generate(widget.data.length, (index) {
-                  return Padding(
-                    padding: EdgeInsets.fromLTRB(1, 2, 1, 2),
-                    child: Card(
-                      child: ListTile(
-                        title: Text(widget.data[index]['name']),
-                        onTap: () {},
+              child: Container(
+                /* width: 300, // Specify the desired width
+                height: 400,  */ // Specify the desired height
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  controller: new ScrollController(keepScrollOffset: false),
+                  shrinkWrap: true,
+                  children: List.generate(widget.data.length, (index) {
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(1, 2, 1, 2),
+                      child: Card(
+                        child: Column(
+                          children: [
+                            Image.network(
+                              widget.data[index]['imgURL'],
+                              height: 80,
+                              width: 150,
+                              // fit: BoxFit.cover
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                widget.data[index]['name'],
+                                style: TextStyle(fontSize: 14),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Color.fromARGB(34, 1, 1, 1),
+                                    ),
+                                    color: Color.fromARGB(255, 229, 226, 226),
+                                  ),
+                                  child: IconButton(
+                                    icon: Icon(Icons.edit),
+                                    onPressed: () {
+                                      // Handle button 1 tap
+                                      print(
+                                          'Button 1 tapped for ${widget.data[index]['name']}');
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Color.fromARGB(34, 1, 1, 1),
+                                    ),
+                                    color: Color.fromARGB(255, 238, 24, 24),
+                                  ),
+                                  child: IconButton(
+                                    icon: Icon(Icons.delete),
+                                    onPressed: () {
+                                      // Handle button 1 tap
+                                      print(
+                                          'Button 1 tapped for ${widget.data[index]['name']}');
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }),
+                    );
+                  }),
+                ),
               ),
             ),
           ],
