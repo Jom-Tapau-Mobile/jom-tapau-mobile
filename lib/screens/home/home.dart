@@ -106,7 +106,9 @@ class Home extends StatelessWidget {
                         ),
                       )),
                 ),
-
+                SizedBox(
+                  height: 40,
+                ),
                 //My order
                 GestureDetector(
                   onTap: () {},
@@ -159,7 +161,9 @@ class Home extends StatelessWidget {
                         ),
                       )),
                 ),
-
+                SizedBox(
+                  height: 40,
+                ),
                 //Subscription
                 GestureDetector(
                   onTap: () {},
