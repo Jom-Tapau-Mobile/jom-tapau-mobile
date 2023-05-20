@@ -17,6 +17,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return const Authenticate();
     } else if (user.email == "admin@gmail.com") {
+      print(user.email);
       return AdminHomePage();
     } else {
       return Home();
