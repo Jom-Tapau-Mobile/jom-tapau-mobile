@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:jom_tapau_mobile/screens/admin/editFood.dart';
+import 'package:jom_tapau_mobile/services/api_services.dart';
 
 import 'package:jom_tapau_mobile/services/auth.dart';
 
@@ -87,8 +88,12 @@ class AdminHomePage extends StatelessWidget {
                 //Edit Food
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => EditFood()));
+                    getData().then((value) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditFood(data: value)));
+                    });
                   },
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
