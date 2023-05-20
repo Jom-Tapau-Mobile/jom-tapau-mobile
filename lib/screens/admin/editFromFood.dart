@@ -4,7 +4,7 @@ import 'package:jom_tapau_mobile/snackbar.dart';
 import '../../services/api_services.dart';
 
 class EditFoodForm extends StatefulWidget {
-  final List<dynamic> data;
+  final data;
   const EditFoodForm({required this.data});
 
   @override
@@ -20,7 +20,7 @@ class _EditFoodFormState extends State<EditFoodForm> {
   String error = '';
   @override
   Widget build(BuildContext context) {
-    print(widget.data[0]['name']);
+    print(widget.data['name']);
     AuthService _auth = AuthService();
     final ButtonStyle style = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);

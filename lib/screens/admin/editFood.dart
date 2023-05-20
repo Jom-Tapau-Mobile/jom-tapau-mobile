@@ -82,13 +82,24 @@ class _EditFoodState extends State<EditFood> {
                                   child: IconButton(
                                     icon: Icon(Icons.edit),
                                     onPressed: () {
+                                      var foodObj = {
+                                        "id": widget.data[index]['_id'],
+                                        "name": widget.data[index]['name'],
+                                        "price": widget.data[index]['price'],
+                                        "imgURL": widget.data[index]['imgURL'],
+                                        "category": widget.data[index]
+                                            ['category'],
+                                        "description": widget.data[index]
+                                            ['description']
+                                      };
                                       getSingleFood(widget.data[index]['_id'])
                                           .then((value) {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    EditFoodForm(data: value)));
+                                                    EditFoodForm(
+                                                        data: foodObj)));
                                       });
                                       // Handle button 1 tap
                                       print(

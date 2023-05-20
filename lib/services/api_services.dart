@@ -71,7 +71,7 @@ Future<List<dynamic>> getSingleFood(var id) async {
   if (response.statusCode == 200) {
     var jsonString = response.body;
     data = json.decode(jsonString);
-    // print(data);
+    print(data);
   } else {
     throw Exception('Failed to fetch data from API');
   }
