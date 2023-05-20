@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:jom_tapau_mobile/models/foodObj.dart';
 import 'package:jom_tapau_mobile/snackbar.dart';
 
-Future getProduct() async {
+Future getFood() async {
   List<FoodObj> foods = [];
 
   Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/food");
