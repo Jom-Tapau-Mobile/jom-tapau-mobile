@@ -92,15 +92,13 @@ class _EditFoodState extends State<EditFood> {
                                         "description": widget.data[index]
                                             ['description']
                                       };
-                                      getSingleFood(widget.data[index]['_id'])
-                                          .then((value) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    EditFoodForm(
-                                                        data: foodObj)));
-                                      });
+
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EditFoodForm(data: foodObj)));
+
                                       // Handle button 1 tap
                                       print(
                                           'Button 1 tapped for ${widget.data[index]['_id']}');
