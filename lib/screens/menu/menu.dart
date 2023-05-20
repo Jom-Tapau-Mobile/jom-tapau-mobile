@@ -16,23 +16,25 @@ class Menu extends StatefulWidget {
 }
 
 class _Menu extends State<Menu> {
+  final AuthService _auth = AuthService();
+  late final userInfo;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Jom Tapau'),
-        centerTitle: true,
-        backgroundColor: Colors.red,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.logout),
-            tooltip: 'Logout',
-            onPressed: () async {
-              await _auth.signOut();
-            },
-          )
-        ],
-      )
-    );
+        appBar: AppBar(
+      title: Text('Jom Tapau'),
+      centerTitle: true,
+      backgroundColor: Colors.red,
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.logout),
+          tooltip: 'Logout',
+          onPressed: () async {
+            await _auth.signOut();
+          },
+        )
+      ],
+    ));
   }
 }
