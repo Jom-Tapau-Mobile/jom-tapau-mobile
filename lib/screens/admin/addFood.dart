@@ -84,7 +84,6 @@ class _AddFoodState extends State<AddFood> {
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
                     cursorColor: Colors.red,
-                    obscureText: true,
                     onChanged: (val) {
                       setState(() => imgURL = val);
                     },
@@ -98,7 +97,6 @@ class _AddFoodState extends State<AddFood> {
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
                     cursorColor: Colors.red,
-                    obscureText: true,
                     onChanged: (val) {
                       setState(() => description = val);
                     },
@@ -112,7 +110,6 @@ class _AddFoodState extends State<AddFood> {
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
                     cursorColor: Colors.red,
-                    obscureText: true,
                     onChanged: (val) {
                       setState(() => category = val);
                     },
@@ -126,7 +123,6 @@ class _AddFoodState extends State<AddFood> {
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
                     cursorColor: Colors.red,
-                    obscureText: true,
                     onChanged: (val) {
                       setState(() => price = val);
                     },
