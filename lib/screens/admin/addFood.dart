@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:jom_tapau_mobile/snackbar.dart';
+import 'package:jom_tapau_mobile/services/auth.dart';
 
 import '../../services/api_services.dart';
 
@@ -23,26 +24,28 @@ class _AddFoodState extends State<AddFood> {
 // ignore: unused_field
   @override
   Widget build(BuildContext context) {
+    AuthService _auth = AuthService();
     final ButtonStyle style = ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 241, 241, 241),
         appBar: AppBar(
-          actions: [
-            TextButton(
-              child: Text('Register', style: TextStyle(color: Colors.white)),
-              onPressed: () async {},
+          title: Text('Admin'),
+          centerTitle: true,
+          backgroundColor: Colors.red,
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.person),
             ),
             IconButton(
-              icon: Icon(Icons.person),
-              tooltip: 'Login',
-              onPressed: () async {},
+              icon: Icon(Icons.logout),
+              tooltip: 'Logout',
+              onPressed: () async {
+                await _auth.signOut();
+              },
             )
           ],
-          backgroundColor: Colors.red[400],
-          centerTitle: true,
-          elevation: 0.0,
-          title: Text('Jom Tapau'),
         ),
         body: Container(
           padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
