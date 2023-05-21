@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jom_tapau_mobile/screens/admin/adminHomepage.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:jom_tapau_mobile/snackbar.dart';
 import '../../services/api_services.dart';
@@ -145,6 +146,11 @@ class _EditFoodFormState extends State<EditFoodForm> {
                         };
 
                         var errorData = updateFood(foodObj, widget.id);
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AdminHomePage()));
 
                         showSnackbar(context);
                         print(foodObj);
