@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:js';
+
 
 import 'package:http/http.dart' as http;
 import 'package:jom_tapau_mobile/models/foodObj.dart';

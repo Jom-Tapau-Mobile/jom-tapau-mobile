@@ -2,7 +2,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
-import 'package:jom_tapau_mobile/models/foodObj.dart';
+
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
 import '../../services/api_services.dart';
