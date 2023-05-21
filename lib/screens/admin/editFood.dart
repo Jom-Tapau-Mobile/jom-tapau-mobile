@@ -83,7 +83,6 @@ class _EditFoodState extends State<EditFood> {
                                     icon: Icon(Icons.edit),
                                     onPressed: () {
                                       var foodObj = {
-                                        "id": widget.data[index]['_id'],
                                         "name": widget.data[index]['name'],
                                         "price": widget.data[index]['price'],
                                         "imgURL": widget.data[index]['imgURL'],
@@ -97,7 +96,7 @@ class _EditFoodState extends State<EditFood> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  EditFoodForm(data: foodObj)));
+                                                  EditFoodForm(id:widget.data[index]['_id'],data: foodObj)));
 
                                       // Handle button 1 tap
                                       print(

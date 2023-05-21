@@ -4,8 +4,9 @@ import 'package:jom_tapau_mobile/snackbar.dart';
 import '../../services/api_services.dart';
 
 class EditFoodForm extends StatefulWidget {
+  final id;
   final data;
-  const EditFoodForm({required this.data});
+  const EditFoodForm({required this.id, required this.data});
 
   @override
   State<EditFoodForm> createState() => _EditFoodFormState();
@@ -67,6 +68,7 @@ class _EditFoodFormState extends State<EditFoodForm> {
                         hintText: 'Enter Food Name',
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
+                    initialValue: widget.data['name'],
                     onChanged: (val) {
                       setState(() => name = val);
                       print(name);
@@ -81,7 +83,7 @@ class _EditFoodFormState extends State<EditFoodForm> {
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
                     cursorColor: Colors.red,
-                    obscureText: true,
+                    initialValue: widget.data['imgURL'],
                     onChanged: (val) {
                       setState(() => imgURL = val);
                     },
@@ -95,7 +97,7 @@ class _EditFoodFormState extends State<EditFoodForm> {
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
                     cursorColor: Colors.red,
-                    obscureText: true,
+                    initialValue: widget.data['description'],
                     onChanged: (val) {
                       setState(() => description = val);
                     },
@@ -109,7 +111,7 @@ class _EditFoodFormState extends State<EditFoodForm> {
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
                     cursorColor: Colors.red,
-                    obscureText: true,
+                    initialValue: widget.data['category'],
                     onChanged: (val) {
                       setState(() => category = val);
                     },
@@ -123,7 +125,7 @@ class _EditFoodFormState extends State<EditFoodForm> {
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.red))),
                     cursorColor: Colors.red,
-                    obscureText: true,
+                    initialValue: widget.data['price'],
                     onChanged: (val) {
                       setState(() => price = val);
                     },
@@ -142,18 +144,18 @@ class _EditFoodFormState extends State<EditFoodForm> {
                           "description": description
                         };
 
-                        var errorData = postData(foodObj);
+                        var errorData = updateFood(foodObj, widget.id);
 
                         showSnackbar(context);
                         print(foodObj);
                       },
-                      child: Text('Add Food')),
+                      child: Text('Edit Food')),
                   SizedBox(
                     height: 20,
                   ),
                   Container(
                     child: Text(
-                      "error",
+                      error,
                       style: TextStyle(color: Colors.red),
                     ),
                   )
