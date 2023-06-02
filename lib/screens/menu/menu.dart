@@ -113,7 +113,22 @@ class _Menu extends State<Menu> {
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      _cartItems.add(foods[index]);
+                                      var searchItem = foods[index]['_id'];
+
+                                      var foundItem = _cartItems.firstWhere(
+                                          (item) => item['_id'] == searchItem,
+                                          orElse: () => '');
+                                      if (foundItem.isNotEmpty) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                                "Item Already Added , to increase quantity go to the cart"),
+                                          ),
+                                        );
+                                      } else {
+                                        _cartItems.add(foods[index]);
+                                      }
                                     });
                                     print(_cartItems);
                                     // cart = cart + 1;

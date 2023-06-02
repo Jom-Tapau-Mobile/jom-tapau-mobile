@@ -11,6 +11,20 @@ class ShoppingCartPage extends StatefulWidget {
 }
 
 class _ShoppingCartPageState extends State<ShoppingCartPage> {
+  void _incrementQuantity(product) {
+    setState(() {
+      product.quantity++;
+    });
+  }
+
+  void _decrementQuantity(product) {
+    setState(() {
+      if (product.quantity > 1) {
+        product.quantity--;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,14 +38,39 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
           return ListTile(
             title: Text("${item['name']}"),
             subtitle: Text('${item['price']}'),
-            trailing: IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {
-                setState(() {
-                  widget.cartItems.remove(item);
-                }) ;
-              },
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {
+                    setState(() {
+                      item['quantity']++;
+                    });
+                    print(item['quantity']);
+                  },
+                ),
+                Text('${item['quantity']}'),
+                IconButton(
+                  icon: Icon(Icons.remove),
+                  onPressed: () {
+                    setState(() {
+                      if (item['quantity'] > 1) item['quantity']--;
+                    });
+                    print(item['quantity']);
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () {
+                    setState(() {
+                      widget.cartItems.remove(item);
+                    });
+                  },
+                ),
+              ],
             ),
+            /////
           );
         },
       ),
