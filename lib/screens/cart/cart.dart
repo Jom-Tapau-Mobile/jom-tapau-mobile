@@ -29,7 +29,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               onPressed: () {
                 setState(() {
                   widget.cartItems.remove(item);
-                });
+                }) ;
               },
             ),
           );
