@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cart/flutter_cart.dart';
 import 'package:jom_tapau_mobile/screens/cart/cart.dart';
-import 'package:jom_tapau_mobile/screens/cart/product_list.dart';
 
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';

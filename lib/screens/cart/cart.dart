@@ -29,6 +29,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red,
         title: Text('Jom Tapau - Food Cart'),
       ),
       body: ListView.builder(
