@@ -149,7 +149,10 @@ class _Menu extends State<Menu> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.shopping_cart),
+        backgroundColor: Colors.red,
+        child: Icon(
+          Icons.shopping_cart,
+        ),
         onPressed: () {
           Navigator.push(
             context,

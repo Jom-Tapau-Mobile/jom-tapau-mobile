@@ -29,7 +29,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopping Cart'),
+        title: Text('Jom Tapau - Food Cart'),
       ),
       body: ListView.builder(
         itemCount: widget.cartItems.length,
