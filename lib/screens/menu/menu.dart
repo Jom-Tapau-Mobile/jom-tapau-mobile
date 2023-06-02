@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
+import 'package:jom_tapau_mobile/screens/cart/cart.dart';
 
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
@@ -18,6 +19,7 @@ class Menu extends StatefulWidget {
 }
 
 class _Menu extends State<Menu> {
+  var cart = 0;
   final AuthService _auth = AuthService();
   late final userInfo;
 
@@ -29,6 +31,15 @@ class _Menu extends State<Menu> {
           centerTitle: true,
           backgroundColor: Colors.red,
           actions: <Widget>[
+            Text("${cart}"),
+            IconButton(
+              icon: Icon(Icons.shopping_cart),
+              tooltip: 'Food Cart',
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Cart()));
+              },
+            ),
             IconButton(
               icon: Icon(Icons.logout),
               tooltip: 'Logout',
@@ -107,6 +118,8 @@ class _Menu extends State<Menu> {
                                     ),
                                     onPressed: () {
                                       // Add to cart logic
+                                      setState(() => cart = cart + 1);
+                                      // cart = cart + 1;
                                     },
                                     child: Text('Add to Cart'),
                                   ),

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:jom_tapau_mobile/models/user.dart';
+import 'package:jom_tapau_mobile/screens/cart/cart.dart';
 
 import 'package:jom_tapau_mobile/screens/wrapper.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/addFood': (context) => AddFood(),
             '/menu': (context) => Menu(),
+            '/cart': (context) => Cart(),
             // Add more routes as needed
           },
           home: Wrapper(),
