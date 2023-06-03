@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:jom_tapau_mobile/screens/admin/editFood.dart';
+import 'package:jom_tapau_mobile/screens/admin/orderPending.dart';
 import 'package:jom_tapau_mobile/services/api_services.dart';
+
+import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 
 import 'package:jom_tapau_mobile/services/auth.dart';
 
@@ -22,7 +25,12 @@ class AdminHomePage extends StatelessWidget {
           backgroundColor: Colors.red,
           actions: <Widget>[
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserProfile()),
+                );
+              },
               icon: Icon(Icons.person),
             ),
             IconButton(
@@ -170,7 +178,52 @@ class AdminHomePage extends StatelessWidget {
                           ),
                         ),
                       )),
-                )
+                ),
+                //Order Pendings
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => OrderPending()),
+                    );
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 100,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        color: Color.fromRGBO(254, 208, 133, 1),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 8.0,
+                            horizontal: 30.0,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Icon(
+                                Icons.pending,
+                                size: 35.0,
+                              ),
+                              Text(
+                                'Order Pending',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey[800],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
