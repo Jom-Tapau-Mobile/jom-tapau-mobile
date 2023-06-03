@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -13,6 +15,9 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPage extends State<CheckoutPage> {
+  //Fetch user data
+  User? user = FirebaseAuth.instance.currentUser;
+
   String deliveryDate = DateFormat('MMMM dd, yyyy').format(DateTime.now());
   String deliveryTime = "ASAP";
   String address = "KLG Block A";
@@ -169,21 +174,21 @@ class _CheckoutPage extends State<CheckoutPage> {
                   // Name input field (disabled)
                   Text('Name:'),
                   TextFormField(
-                    initialValue: 'ABC',
+                    initialValue: user?.displayName ?? "null",
                     enabled: false,
                   ),
                   SizedBox(height: 16.0),
                   // Email input field (disabled)
                   Text('Email:'),
                   TextFormField(
-                    initialValue: 'abc@abc.cd',
+                    initialValue: user?.email ?? "null",
                     enabled: false,
                   ),
                   SizedBox(height: 16.0),
                   // Phone Number input field (disabled)
                   Text('Phone Number:'),
                   TextFormField(
-                    initialValue: '1234',
+                    initialValue: user?.phoneNumber ?? "null",
                     enabled: false,
                   ),
                 ],
