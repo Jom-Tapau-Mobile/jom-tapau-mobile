@@ -97,6 +97,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               ),
               onPressed: () {
                 setState(() {});
+                print(widget.cartItems);
 
                 // Handle button press
               },
@@ -120,6 +121,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
             context,
             MaterialPageRoute(
               builder: (context) => CheckoutPage(
+                cartItems: widget.cartItems,
                 totalPrice: calculateTotalPrice(),
               ),
             ),

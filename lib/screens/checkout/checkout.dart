@@ -7,8 +7,9 @@ const DELIVERY_CHARGE = 1.00;
 
 class CheckoutPage extends StatefulWidget {
   final double totalPrice;
+  final List<dynamic> cartItems;
 
-  CheckoutPage({required this.totalPrice});
+  CheckoutPage({required this.cartItems, required this.totalPrice});
 
   @override
   State<CheckoutPage> createState() => _CheckoutPage();
@@ -23,6 +24,7 @@ class _CheckoutPage extends State<CheckoutPage> {
   String address = "KLG Block A";
   String roomNumber = '';
   String paymentOption = 'Cash on Delivery';
+  String phoneNumber = '';
 
   List<String> deliveryDates = [
     DateFormat('MMMM dd, yyyy').format(DateTime.now()),
@@ -45,6 +47,7 @@ class _CheckoutPage extends State<CheckoutPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.cartItems);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
@@ -189,7 +192,8 @@ class _CheckoutPage extends State<CheckoutPage> {
                   Text('Phone Number:'),
                   TextFormField(
                     initialValue: user?.phoneNumber ?? "null",
-                    enabled: false,
+                    enabled: true,
+                    onChanged: (value) => {phoneNumber = value.toString()},
                   ),
                 ],
               ),
@@ -246,6 +250,7 @@ class _CheckoutPage extends State<CheckoutPage> {
                 ),
                 onPressed: () {
                   // Confirm payment operation
+                  handleConfirmOrder();
                 },
                 child: Text(
                   'Confirm',
@@ -261,5 +266,21 @@ class _CheckoutPage extends State<CheckoutPage> {
         ),
       ),
     );
+  }
+
+  void handleConfirmOrder() {
+    var orderObj = {
+      "name": user?.displayName,
+      "email": user?.email,
+      "phoneNumber": phoneNumber,
+      "deliveryDate": deliveryDate,
+      "deliveryAddress": address,
+      "roomNumber": roomNumber,
+      "paymentMethod": "Cash",
+      "total": widget.totalPrice,
+      "status": "",
+      "orders": widget.cartItems
+    };
+    print(orderObj);
   }
 }
