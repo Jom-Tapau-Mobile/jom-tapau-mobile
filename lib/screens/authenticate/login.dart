@@ -82,7 +82,7 @@ class _LoginState extends State<Login> {
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                    borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide.none,
                   ),
                 ),
@@ -99,7 +99,7 @@ class _LoginState extends State<Login> {
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                    borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide.none,
                   ),
                   suffixIcon: IconButton(
