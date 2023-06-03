@@ -17,6 +17,20 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
     });
   }
 
+  double calculateTotalPrice() {
+    double totalPrice = 0.0;
+
+    for (var item in widget.cartItems) {
+      int quantity = int.parse(item['quantity'].toString());
+      num price = num.parse(item['price']);
+
+      totalPrice += quantity * price;
+      print(totalPrice);
+    }
+
+    return totalPrice;
+  }
+
   void _decrementQuantity(product) {
     setState(() {
       if (product.quantity > 1) {
@@ -33,46 +47,61 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
         title: Text('Jom Tapau - Food Cart'),
       ),
       body: ListView.builder(
-        itemCount: widget.cartItems.length,
+        itemCount: widget.cartItems.length + 1,
         itemBuilder: (context, index) {
-          final item = widget.cartItems[index];
-          return ListTile(
-            title: Text("${item['name']}"),
-            subtitle: Text('${item['price']}'),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {
-                    setState(() {
-                      item['quantity']++;
-                    });
-                    print(item['quantity']);
-                  },
-                ),
-                Text('${item['quantity']}'),
-                IconButton(
-                  icon: Icon(Icons.remove),
-                  onPressed: () {
-                    setState(() {
-                      if (item['quantity'] > 1) item['quantity']--;
-                    });
-                    print(item['quantity']);
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () {
-                    setState(() {
-                      widget.cartItems.remove(item);
-                    });
-                  },
-                ),
-              ],
-            ),
-            /////
-          );
+          if (index < widget.cartItems.length) {
+            final item = widget.cartItems[index];
+            return ListTile(
+              title: Text("${item['name']}"),
+              subtitle: Text('${item['price']}'),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      setState(() {
+                        item['quantity']++;
+                      });
+                      print(item['quantity']);
+                    },
+                  ),
+                  Text('${item['quantity']}'),
+                  IconButton(
+                    icon: Icon(Icons.remove),
+                    onPressed: () {
+                      setState(() {
+                        if (item['quantity'] > 1) item['quantity']--;
+                      });
+                      print(item['quantity']);
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      setState(() {
+                        widget.cartItems.remove(item);
+                      });
+                    },
+                  ),
+                ],
+              ),
+              /////
+            );
+          } else {
+            return ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    Colors.red, // Set the desired background color here
+              ),
+              onPressed: () {
+                setState(() {});
+
+                // Handle button press
+              },
+              child: Text('Total Price: ${calculateTotalPrice()}'),
+            );
+          }
         },
       ),
       floatingActionButton: FloatingActionButton(
