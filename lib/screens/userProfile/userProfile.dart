@@ -20,7 +20,7 @@ class _UserProfileState extends State<UserProfile> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Jom Tapau'),
+        title: Text('Jom Tapau- Profile'),
         centerTitle: true,
         backgroundColor: Colors.red,
         actions: <Widget>[
