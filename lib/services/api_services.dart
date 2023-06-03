@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-
 import 'package:http/http.dart' as http;
 import 'package:jom_tapau_mobile/models/foodObj.dart';
 import 'package:jom_tapau_mobile/snackbar.dart';
@@ -127,4 +126,26 @@ Future<String> updateFood(var foodObj, var id) async {
     print("error");
   }
   return error;
+}
+
+Future<String> postOrder(var orderObj) async {
+  // print(orderObj);
+  Uri url = Uri.parse('https://jom-tapau-backend.onrender.com/postOrder');
+  var headers = {'Content-Type': 'application/json'};
+  var jsonData = jsonEncode(orderObj);
+  print(jsonData);
+
+  try {
+    var response = await http.post(url, body: jsonData, headers: headers);
+    if (response.statusCode == 200) {
+      var jsonResponse = jsonDecode(response.body);
+
+      print(jsonResponse);
+    } else {
+      print(response.statusCode);
+    }
+  } catch (error) {
+    print('Error: $error');
+  }
+  return "";
 }

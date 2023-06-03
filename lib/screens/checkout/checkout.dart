@@ -1,7 +1,13 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:jom_tapau_mobile/services/api_services.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
 
 const DELIVERY_CHARGE = 1.00;
 
@@ -248,10 +254,24 @@ class _CheckoutPage extends State<CheckoutPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                 ),
-                onPressed: () {
-                  // Confirm payment operation
-                  handleConfirmOrder();
-                },
+                onPressed: widget.cartItems.length > 0
+                    ? () {
+                        // Confirm payment operation
+                        var orderObj = {
+                          "name": user?.displayName,
+                          "email": user?.email,
+                          "phoneNumber": phoneNumber,
+                          "deliveryDate": deliveryDate,
+                          "deliveryAddress": address,
+                          "roomNumber": roomNumber,
+                          "paymentMethod": "Cash",
+                          "total": widget.totalPrice,
+                          "status": "",
+                          "orders": widget.cartItems
+                        };
+                        postOrder(orderObj);
+                      }
+                    : null,
                 child: Text(
                   'Confirm',
                   style: TextStyle(
@@ -266,21 +286,5 @@ class _CheckoutPage extends State<CheckoutPage> {
         ),
       ),
     );
-  }
-
-  void handleConfirmOrder() {
-    var orderObj = {
-      "name": user?.displayName,
-      "email": user?.email,
-      "phoneNumber": phoneNumber,
-      "deliveryDate": deliveryDate,
-      "deliveryAddress": address,
-      "roomNumber": roomNumber,
-      "paymentMethod": "Cash",
-      "total": widget.totalPrice,
-      "status": "",
-      "orders": widget.cartItems
-    };
-    print(orderObj);
   }
 }
