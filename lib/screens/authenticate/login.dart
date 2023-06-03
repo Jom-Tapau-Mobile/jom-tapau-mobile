@@ -14,6 +14,7 @@ class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   String email = '';
   String password = '';
+  bool isPasswordVisible = false;
   String error = '';
 
   @override
@@ -62,9 +63,14 @@ class _LoginState extends State<Login> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Text(
-                'Please Login to Continue',
-                style: TextStyle(color: Colors.red, fontSize: 28),
+              SizedBox(height: 40.0),
+              Center(
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundImage:
+                      Image.network('https://i.ibb.co/Cs2T3DL/logo-png.png')
+                          .image,
+                ),
               ),
               SizedBox(height: 40.0),
               TextFormField(
@@ -96,9 +102,22 @@ class _LoginState extends State<Login> {
                     borderRadius: BorderRadius.circular(30.0),
                     borderSide: BorderSide.none,
                   ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      isPasswordVisible
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      color: Colors.grey,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isPasswordVisible = !isPasswordVisible;
+                      });
+                    },
+                  ),
                 ),
                 cursorColor: Colors.red,
-                obscureText: true,
+                obscureText: !isPasswordVisible,
                 onChanged: (val) {
                   setState(() => password = val);
                 },
@@ -110,9 +129,11 @@ class _LoginState extends State<Login> {
                   dynamic result = await _auth.loginWithEmail(email, password);
                   if (result == null) {
                     setState(() => error = "Please supply a valid email");
-                  } else if (result == "user-not-found" ||
-                      result == "wrong-password") {
-                    setState(() => error = result);
+                  } else {
+                    if (result == "user-not-found" ||
+                        result == "wrong-password") {
+                      setState(() => error = result);
+                    }
                   }
                 },
                 child: Text(
