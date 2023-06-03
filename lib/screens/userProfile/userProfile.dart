@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
+import 'package:jom_tapau_mobile/screens/userProfile/OrderList.dart';
 
 class UserProfile extends StatefulWidget {
-  const UserProfile({super.key});
+  const UserProfile({Key? key}) : super(key: key);
 
   @override
   State<UserProfile> createState() => _UserProfileState();
@@ -13,9 +14,18 @@ class _UserProfileState extends State<UserProfile> {
   final AuthService _auth = AuthService();
   late final userInfo;
 
+  void goToOrderList() {
+    User? user = FirebaseAuth.instance.currentUser;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OrderList(userEmail: user!.email),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    //fetch data
     User? user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
@@ -75,15 +85,18 @@ class _UserProfileState extends State<UserProfile> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      child: Column(
-                        children: [
-                          Icon(Icons.rice_bowl_sharp, size: 70),
-                          Text(
-                            "Order",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ],
+                    GestureDetector(
+                      onTap: goToOrderList,
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Icon(Icons.rice_bowl_sharp, size: 70),
+                            Text(
+                              "Order",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Spacer(),
