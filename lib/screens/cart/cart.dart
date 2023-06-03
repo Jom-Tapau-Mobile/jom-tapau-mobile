@@ -88,11 +88,12 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
               ),
               /////
             );
-            // print(int.parse(item['quantity'].toString()));
-            // total +=
-            //     double.parse(item['price']) * int.parse(item['quantity']);
           } else {
             return ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    Colors.red, // Set the desired background color here
+              ),
               onPressed: () {
                 setState(() {});
 
