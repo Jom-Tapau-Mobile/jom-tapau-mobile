@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jom_tapau_mobile/models/product.dart';
+import '../checkout/checkout.dart';
 
 class ShoppingCartPage extends StatefulWidget {
   final List<dynamic> cartItems;
@@ -114,7 +115,16 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
           "Checkout",
           style: TextStyle(fontSize: 10.0),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CheckoutPage(
+                totalPrice: calculateTotalPrice(),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
