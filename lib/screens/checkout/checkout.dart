@@ -232,6 +232,26 @@ class _CheckoutPage extends State<CheckoutPage> {
                 ],
               ),
             ),
+
+            Container(
+              padding: EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                ),
+                onPressed: () {
+                  // Confirm payment operation
+                },
+                child: Text(
+                  'Confirm',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
