@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 import 'package:jom_tapau_mobile/services/api_services.dart';
+import 'package:jom_tapau_mobile/services/auth.dart';
 
 class allOrder extends StatefulWidget {
   const allOrder({super.key});
@@ -9,13 +11,35 @@ class allOrder extends StatefulWidget {
 }
 
 class _allOrderState extends State<allOrder> {
+  AuthService _auth = AuthService();
+  var myData;
   var data = getAllOrders();
   @override
   Widget build(BuildContext context) {
-    data.then((value) => print(value));
+    // data.then((value) => print(value));
     return Scaffold(
       appBar: AppBar(
-        title: Text('Orders'),
+        title: Text('All Order'),
+        centerTitle: true,
+        backgroundColor: Colors.red,
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserProfile()),
+              );
+            },
+            icon: Icon(Icons.person),
+          ),
+          IconButton(
+            icon: Icon(Icons.logout),
+            tooltip: 'Logout',
+            onPressed: () async {
+              await _auth.signOut();
+            },
+          )
+        ],
       ),
       body: FutureBuilder<List<dynamic>>(
         future: getAllOrders(),
@@ -25,15 +49,125 @@ class _allOrderState extends State<allOrder> {
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasData) {
-            // Process and display the orders here
             List<dynamic> orders = snapshot.data!;
             return ListView.builder(
               itemCount: orders.length,
               itemBuilder: (context, index) {
-                // Build your UI for each order item here
-                return ListTile(
-                  title: Text('Order ${index + 1}'),
-                  subtitle: Text('Status: ${orders[index]['status']}'),
+                return Card(
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  margin: EdgeInsets.all(8),
+                  color: Colors.white,
+                  child: Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${index + 1}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${snapshot.data?[index]['name']}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                'Address',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                'Food List',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Price: ',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                                Text(
+                                  '${snapshot.data?[index]['total']}',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Text(
+                                  'Phone: ',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                                Text(
+                                  '${snapshot.data?[index]['phoneNumber']}',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Text(
+                                  'Status: ',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                                Text(
+                                  '${snapshot.data?[index]['status']}',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             );
