@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:convert';
 
@@ -146,13 +145,12 @@ Future<String> postOrder(var orderObj) async {
       // print(jsonResponse);
       print(response.statusCode);
 
-      return "200" ;
+      return "200";
     } else {
       print(response.statusCode);
-      return "err";
     }
   } catch (error) {
     print('Error: $error');
-    return "err";
   }
+  return "error";
 }

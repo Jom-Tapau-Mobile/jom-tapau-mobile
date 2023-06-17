@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_controller.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -9,12 +11,29 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../models/user.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   Home({super.key});
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  List imageList = [
+    {"id": 1, "image_path": 'assets/images/food1.jpg'},
+    {"id": 2, "image_path": 'assets/images/food2.jpg'},
+    {"id": 3, "image_path": 'assets/images/food3.jpg'},
+  ];
+
+  final CarouselController carouselController = CarouselController();
+
+  int currentIndex = 0;
+
+  @override
   final AuthService _auth = AuthService();
+
   late final userInfo;
+
   Widget build(BuildContext context) {
     //get the current user from the firebase
     _auth.getAuth().authStateChanges().listen((User? user) {
@@ -48,10 +67,37 @@ class Home extends StatelessWidget {
           ],
         ),
         body: Center(
-          child: Container(
-            width: 350,
-            padding: EdgeInsets.all(10.0),
-            child: ListView(
+          child: Column(children: [
+            Stack(
+              children: [
+                InkWell(
+                  onTap: () {
+                    print("object");
+                  },
+                  child: CarouselSlider(
+                    carouselController: carouselController,
+                    options: CarouselOptions(
+                        scrollPhysics: const BouncingScrollPhysics(),
+                        autoPlay: true,
+                        aspectRatio: 2,
+                        viewportFraction: 1,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            currentIndex = index;
+                          });
+                        }),
+                    items: imageList
+                        .map((item) => Image.asset(
+                              item['image_path'],
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                            ))
+                        .toList(),
+                  ),
+                )
+              ],
+            ),
+            ListView(
               shrinkWrap: true,
               padding: EdgeInsets.all(8.0),
               children: <Widget>[
@@ -221,7 +267,7 @@ class Home extends StatelessWidget {
                 )
               ],
             ),
-          ),
+          ]),
         ));
   }
 }

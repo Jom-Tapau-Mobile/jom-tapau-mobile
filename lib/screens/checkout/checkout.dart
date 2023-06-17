@@ -256,7 +256,7 @@ class _CheckoutPage extends State<CheckoutPage> {
                   backgroundColor: Colors.red,
                 ),
                 onPressed: widget.cartItems.length > 0
-                    ? () {
+                    ? () async {
                         // Confirm payment operation
                         var orderObj = {
                           "name": user?.displayName,
@@ -270,7 +270,14 @@ class _CheckoutPage extends State<CheckoutPage> {
                           "status": "",
                           "orders": widget.cartItems
                         };
-                        postOrder(orderObj);
+                        // Using then method
+                        var code = await postOrder(orderObj).then((value) {
+                          // Access the result
+                          print(value);
+                        });
+                        print(code);
+
+// Using await
                       }
                     : null,
                 child: Text(
