@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:jom_tapau_mobile/screens/admin/allOrders.dart';
 import 'package:jom_tapau_mobile/screens/admin/editFood.dart';
 import 'package:jom_tapau_mobile/screens/admin/orderPending.dart';
 import 'package:jom_tapau_mobile/services/api_services.dart';
@@ -142,7 +143,12 @@ class AdminHomePage extends StatelessWidget {
 
                 //Subscription
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => allOrder()),
+                    );
+                  },
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(

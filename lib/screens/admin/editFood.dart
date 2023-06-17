@@ -21,7 +21,7 @@ class _EditFoodState extends State<EditFood> {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 218, 214, 214),
         appBar: AppBar(
-          title: Text('Admin'),
+          title: Text('Edit Food'),
           centerTitle: true,
           backgroundColor: Colors.red,
           actions: <Widget>[
@@ -96,7 +96,10 @@ class _EditFoodState extends State<EditFood> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  EditFoodForm(id:widget.data[index]['_id'],data: foodObj)));
+                                                  EditFoodForm(
+                                                      id: widget.data[index]
+                                                          ['_id'],
+                                                      data: foodObj)));
 
                                       // Handle button 1 tap
                                       print(
