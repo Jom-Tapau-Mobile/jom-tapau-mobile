@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:jom_tapau_mobile/models/foodObj.dart';
+import 'package:jom_tapau_mobile/services/notifi_service.dart';
 import 'package:jom_tapau_mobile/snackbar.dart';
 
 Future<List<dynamic>> getFood() async {
@@ -133,19 +134,24 @@ Future<String> postOrder(var orderObj) async {
   Uri url = Uri.parse('https://jom-tapau-backend.onrender.com/postOrder');
   var headers = {'Content-Type': 'application/json'};
   var jsonData = jsonEncode(orderObj);
-  print(jsonData);
-
+  // print(jsonData);
+  NotificationService().showNotification(
+      title: 'Order Placed!', body: 'We wish you a happy meal');
   try {
     var response = await http.post(url, body: jsonData, headers: headers);
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
 
-      print(jsonResponse);
+      // print(jsonResponse);
+      print(response.statusCode);
+
+      return "200";
     } else {
       print(response.statusCode);
+      return "err";
     }
   } catch (error) {
     print('Error: $error');
+    return "err";
   }
-  return "";
 }

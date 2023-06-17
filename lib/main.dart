@@ -4,9 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:jom_tapau_mobile/models/user.dart';
 import 'package:jom_tapau_mobile/screens/cart/cart.dart';
 
-
 import 'package:jom_tapau_mobile/screens/wrapper.dart';
 import 'package:jom_tapau_mobile/services/auth.dart';
+import 'package:jom_tapau_mobile/services/notifi_service.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'screens/admin/addFood.dart';
@@ -14,6 +14,8 @@ import 'screens/menu/menu.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await NotificationService().initNotification();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
