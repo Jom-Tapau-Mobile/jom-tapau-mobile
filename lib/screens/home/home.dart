@@ -4,12 +4,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 
 import 'package:jom_tapau_mobile/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../models/user.dart';
+import '../share-button/share-button.dart';
 
 class Home extends StatefulWidget {
   Home({super.key});
@@ -264,7 +266,15 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       )),
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ShareButton(
+                    text:
+                        'Check out JomTapau! A pre order food delivery service:',
+                    url: 'https://google.com',
+                  ),
+                ),
               ],
             ),
           ]),
