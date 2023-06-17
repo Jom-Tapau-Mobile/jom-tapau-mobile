@@ -16,8 +16,8 @@ import '../share-button/share-button.dart';
 class Home extends StatefulWidget {
   Home({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
+  @override 
+  State<Home> createState()  => _HomeState();
 }
 
 class _HomeState extends State<Home> {
