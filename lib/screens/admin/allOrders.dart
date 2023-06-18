@@ -12,17 +12,9 @@ class allOrder extends StatefulWidget {
 
 class _allOrderState extends State<allOrder> {
   AuthService _auth = AuthService();
-  var totalIncome = 0.0;
-  double income = 0.0;
   var data = getAllOrders();
   @override
   Widget build(BuildContext context) {
-    data.then((value) => {
-          value.forEach((element) {
-            income += element['total'];
-            print(income);
-          }),
-        });
     return Scaffold(
         appBar: AppBar(
           title: Text('All Order'),
@@ -54,12 +46,40 @@ class _allOrderState extends State<allOrder> {
             ),
             Center(
               child: Text(
-                "ALL Orders",
+                "ALL Orders ",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic),
               ),
+            ),
+            Center(
+              child: FutureBuilder<List<dynamic>>(
+                  future: getAllOrders(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (snapshot.hasData) {
+                      List<dynamic> orders = snapshot.data!;
+                      double totalIncome = 0;
+
+                      // Calculate total income
+                      for (var order in orders) {
+                        totalIncome += order['total'];
+                      }
+
+                      print("data= $totalIncome");
+
+                      // Return the desired widget or value
+                      return Text('Total Income: $totalIncome');
+                    } else {
+                      return Center(
+                        child: Text('No orders available'),
+                      );
+                    }
+                  }),
             ),
             SizedBox(height: 20),
             Expanded(
