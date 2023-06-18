@@ -187,13 +187,11 @@ Future<String> postOrder(var orderObj) async {
 
       // print(jsonResponse);
       print(response.statusCode);
-
-      return "200";
     } else {
       print(response.statusCode);
     }
   } catch (error) {
     print('Error: $error');
   }
-  return "error";
+  return "";
 }

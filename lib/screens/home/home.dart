@@ -221,57 +221,7 @@ class _HomeState extends State<Home> {
                   height: 40,
                 ),
                 //Subscription
-                GestureDetector(
-                  onTap: () {},
-                  child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color:
-                                  Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: Offset(
-                                  0, 3), // changes the position of the shadow
-                            ),
-                          ],
-                        ),
-                        height: 100,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.black),
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          color: Color.fromRGBO(247, 247, 247, 1),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 8.0,
-                              horizontal: 30.0,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.restaurant_menu,
-                                  size: 35.0,
-                                ),
-                                Text(
-                                  'Subscription',
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey[800],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      )),
-                ),
+
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ShareButton(

@@ -7,15 +7,16 @@ class ShareButton extends StatelessWidget {
 
   ShareButton({required this.text, required this.url});
 
-  void _shareLink() {
+  void shareLink() {
     Share.share('$text\n$url');
   }
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.share),
-      onPressed: _shareLink,
-    );
+        icon: Icon(Icons.share),
+        onPressed: () {
+          shareLink();
+        });
   }
 }

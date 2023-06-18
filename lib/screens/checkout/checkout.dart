@@ -271,11 +271,7 @@ class _CheckoutPage extends State<CheckoutPage> {
                           "orders": widget.cartItems
                         };
                         // Using then method
-                        var code = await postOrder(orderObj).then((value) {
-                          // Access the result
-                          print(value);
-                        });
-                        print(code);
+                        postOrder(orderObj);
 
 // Using await
                       }
