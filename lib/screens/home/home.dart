@@ -4,7 +4,11 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:share/share.dart';
+=======
+import 'package:jom_tapau_mobile/screens/userProfile/myOrder.dart';
+>>>>>>> fetch-order
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 
 import 'package:jom_tapau_mobile/services/auth.dart';
@@ -162,7 +166,12 @@ class _HomeState extends State<Home> {
                 ),
                 //My order
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => myOrder()),
+                    );
+                  },
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(

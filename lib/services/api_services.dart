@@ -32,6 +32,49 @@ Future<List<dynamic>> getFood() async {
   return [];
 }
 
+//get all orders admin
+Future<List<dynamic>> getAllOrders() async {
+  Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/allOrders");
+
+  try {
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+
+      // List<dynamic> foods = [];
+
+      // foods = data.map((food) => FoodObj(
+      //     name: food['name'],
+      //     price: food['price'],
+      //     description: food['quantity'],
+      //     category: food['category'],
+      //     imgURL: food['imgURL']));
+      return data;
+    } else {
+      return [];
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+  return [];
+}
+
+//get a specific user order
+Future<List<dynamic>> getUserOrder(var userEmail) async {
+  Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/findUserOrder");
+  var email = jsonEncode({"email": userEmail});
+  var headers = {'content-type': 'application/json'};
+  var post = await http.post(url, body: email, headers: headers);
+  if (post.statusCode == 200) {
+    var data = jsonDecode(post.body);
+    // print(data);
+    return data;
+  } else {
+    print(post.statusCode);
+  }
+  return [];
+}
+
 Future<String> postData(var foodObj) async {
   Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/food");
   var error = '';

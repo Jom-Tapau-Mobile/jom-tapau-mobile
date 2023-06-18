@@ -28,6 +28,7 @@ class _OrderPendingState extends State<OrderPending> {
           setState(() {
             _orderDetails = data;
           });
+          print(_orderDetails);
         }
       } else {
         print('Failed to fetch order details');
