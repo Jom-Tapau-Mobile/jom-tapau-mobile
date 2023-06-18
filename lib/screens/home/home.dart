@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
+import 'package:jom_tapau_mobile/screens/userProfile/myOrder.dart';
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 
 import 'package:jom_tapau_mobile/services/auth.dart';
@@ -114,7 +115,12 @@ class Home extends StatelessWidget {
                 ),
                 //My order
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => myOrder()),
+                    );
+                  },
                   child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(

@@ -58,6 +58,22 @@ Future<List<dynamic>> getAllOrders() async {
   return [];
 }
 
+//get a specific user order
+Future<List<dynamic>> getUserOrder(var userEmail) async {
+  Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/findUserOrder");
+  var email = jsonEncode({"email": userEmail});
+  var headers = {'content-type': 'application/json'};
+  var post = await http.post(url, body: email, headers: headers);
+  if (post.statusCode == 200) {
+    var data = jsonDecode(post.body);
+    print(data);
+    // return data;
+  } else {
+    print(post.statusCode);
+  }
+  return [];
+}
+
 Future<String> postData(var foodObj) async {
   Uri url = Uri.parse("https://jom-tapau-backend.onrender.com/food");
   var error = '';
