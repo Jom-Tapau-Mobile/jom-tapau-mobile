@@ -4,11 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:share/share.dart';
-=======
 import 'package:jom_tapau_mobile/screens/userProfile/myOrder.dart';
->>>>>>> fetch-order
 import 'package:jom_tapau_mobile/screens/userProfile/userProfile.dart';
 
 import 'package:jom_tapau_mobile/services/auth.dart';
@@ -20,8 +16,8 @@ import '../share-button/share-button.dart';
 class Home extends StatefulWidget {
   Home({super.key});
 
-  @override 
-  State<Home> createState()  => _HomeState();
+  @override
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
